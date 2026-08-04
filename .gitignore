@@ -11,3 +11,7 @@ __pycache__/
 .DS_Store
 # CLIP weights are downloaded at runtime — don't commit
 ~/.cache/huggingface/
+node_modules/
+package.json
+package-lock.json
+

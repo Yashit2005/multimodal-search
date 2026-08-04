@@ -1094,36 +1094,44 @@
 
 <!-- Transformers.js -->
 <script type="module">
-import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.2/dist/transformers.min.js';
+import {
+  AutoTokenizer,
+  AutoProcessor,
+  CLIPTextModelWithProjection,
+  CLIPVisionModelWithProjection,
+  RawImage,
+  env
+} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.2/dist/transformers.min.js';
 
-// â”€â”€ Gallery images (Unsplash â€” free-to-use)
+// Gallery images
 const GALLERY = [
-  { url:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', caption:'a dog running on a sunny beach' },
-  { url:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400', caption:'a golden retriever puppy playing fetch in grass' },
-  { url:'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400', caption:'a cat sleeping peacefully on a warm sofa' },
-  { url:'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400', caption:'an orange tabby cat looking at the camera' },
-  { url:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400', caption:'sunset over the ocean with golden sky' },
-  { url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', caption:'mountain landscape with snow peaks and blue sky' },
-  { url:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400', caption:'dense green forest with sunlight filtering through trees' },
-  { url:'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=400', caption:'urban street at night with neon lights and rain reflections' },
-  { url:'https://images.unsplash.com/photo-1540747913346-19212a729f33?w=400', caption:'children playing and laughing in an outdoor park' },
-  { url:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400', caption:'people celebrating at a party with confetti and music' },
-  { url:'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400', caption:'beautiful sunrise over rolling hills and meadows' },
-  { url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', caption:'a horse galloping across an open field' },
-  { url:'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400', caption:'colorful tropical fish swimming in coral reef' },
-  { url:'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=400', caption:'a rabbit sitting in green grass in a garden' },
-  { url:'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400', caption:'a bird in flight over a calm lake at dawn' },
-  { url:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400', caption:'colorful healthy salad with fresh vegetables on a plate' },
-  { url:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400', caption:'modern cozy living room with sofa and warm lighting' },
-  { url:'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400', caption:'a rocket launching into space with bright exhaust flames' },
-  { url:'https://images.unsplash.com/photo-1483982258113-b72862e6cff6?w=400', caption:'snowy winter forest with tall pine trees covered in snow' },
-  { url:'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=400', caption:'abstract colorful painting with bold brushstrokes and vivid colors' },
+  { url:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', caption:'A labrador dog running on a sunny beach' },
+  { url:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400', caption:'A golden retriever puppy playing fetch in grass' },
+  { url:'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400', caption:'A cat sleeping peacefully on a warm sofa' },
+  { url:'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400', caption:'An orange tabby cat looking at the camera' },
+  { url:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400', caption:'Sunset over the ocean with golden sky' },
+  { url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', caption:'Mountain landscape with snow peaks and blue sky' },
+  { url:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400', caption:'Dense green forest with sunlight filtering through trees' },
+  { url:'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=400', caption:'Urban street at night with neon lights and rain reflections' },
+  { url:'https://images.unsplash.com/photo-1540747913346-19212a729f33?w=400', caption:'Children playing and laughing in an outdoor park' },
+  { url:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400', caption:'People celebrating at a party with confetti and music' },
+  { url:'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400', caption:'Beautiful sunrise over rolling hills and meadows' },
+  { url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', caption:'A horse galloping across an open field' },
+  { url:'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400', caption:'Colorful tropical fish swimming in coral reef' },
+  { url:'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=400', caption:'A rabbit sitting in green grass in a garden' },
+  { url:'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400', caption:'A bird in flight over a calm lake at dawn' },
+  { url:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400', caption:'Colorful healthy salad with fresh vegetables' },
+  { url:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400', caption:'Modern cozy living room with sofa and warm lighting' },
+  { url:'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400', caption:'A rocket launching into space with bright exhaust' },
+  { url:'https://images.unsplash.com/photo-1483982258113-b72862e6cff6?w=400', caption:'Snowy winter forest with tall pine trees' },
+  { url:'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=400', caption:'Abstract colorful painting with bold brushstrokes' },
 ];
 
-// Pre-extract all captions for multi-label scoring
-const ALL_CAPTIONS = GALLERY.map(g => g.caption);
-
-let extractor = null;
+let tokenizer = null;
+let textModel = null;
+let processor = null;
+let visionModel = null;
+let galleryVecs = [];
 let modelReady = false;
 
 const loaderOverlay = document.getElementById('loader-overlay');
@@ -1139,122 +1147,169 @@ function setProgress(pct, msg) {
   if (msg) { loaderMsg.textContent = msg; statusText.textContent = msg; }
 }
 
+function normalize(tensor) {
+  const [num, dim] = tensor.dims;
+  const data = tensor.data;
+  const vecs = [];
+  for (let i = 0; i < num; i++) {
+    const vec = new Float32Array(dim);
+    let norm = 0;
+    for (let j = 0; j < dim; j++) {
+      const val = data[i * dim + j];
+      norm += val * val;
+      vec[j] = val;
+    }
+    norm = Math.sqrt(norm) || 1e-8;
+    for (let j = 0; j < dim; j++) vec[j] /= norm;
+    vecs.push(vec);
+  }
+  return vecs;
+}
+
+function dot(a, b) {
+  let sum = 0;
+  for (let i = 0; i < a.length; i++) sum += a[i] * b[i];
+  return sum;
+}
+
+async function encodeText(texts) {
+  const textArray = Array.isArray(texts) ? texts : [texts];
+  const textInputs = tokenizer(textArray, { padding: true, truncation: true });
+  const { text_embeds } = await textModel(textInputs);
+  return normalize(text_embeds);
+}
+
+async function encodeImage(imageSource) {
+  const img = await RawImage.read(imageSource);
+  const imageInputs = await processor(img);
+  const { image_embeds } = await visionModel(imageInputs);
+  return normalize(image_embeds)[0];
+}
+
 async function init() {
   try {
-    setProgress(5, 'Initialising CLIP model (ViT-B/32)â€¦');
+    setProgress(5, 'Initialising CLIP models (ViT-B/32)...');
     env.allowLocalModels = false;
 
-    extractor = await pipeline(
-      'zero-shot-image-classification',
-      'Xenova/clip-vit-base-patch32',
-      {
-        progress_callback: (p) => {
-          if (p.status === 'downloading' && p.total) {
-            const pct = Math.round((p.loaded / p.total) * 85);
-            setProgress(5 + pct, `Downloading CLIP weightsâ€¦ ${Math.round(p.loaded/1e6)}MB / ${Math.round(p.total/1e6)}MB`);
-          }
-        }
-      }
-    );
+    const MODEL_ID = 'Xenova/clip-vit-base-patch32';
+    
+    tokenizer = await AutoTokenizer.from_pretrained(MODEL_ID);
+    setProgress(20, 'Text Tokenizer loaded...');
+    
+    textModel = await CLIPTextModelWithProjection.from_pretrained(MODEL_ID);
+    setProgress(40, 'CLIP Text Model loaded...');
 
-    setProgress(100, 'âœ… Ready â€” CLIP loaded. Gallery of 20 images ready to search.');
+    processor = await AutoProcessor.from_pretrained(MODEL_ID);
+    setProgress(60, 'Image Processor loaded...');
+
+    visionModel = await CLIPVisionModelWithProjection.from_pretrained(MODEL_ID);
+    setProgress(75, 'CLIP Vision Model loaded. Indexing 20 gallery images...');
+
+    galleryVecs = [];
+    for (let i = 0; i < GALLERY.length; i++) {
+      const pct = 75 + Math.round((i / GALLERY.length) * 23);
+      setProgress(pct, `Indexing gallery image ${i+1}/${GALLERY.length}...`);
+      try {
+        const vec = await encodeImage(GALLERY[i].url);
+        galleryVecs.push(vec);
+      } catch (err) {
+        console.warn(`Could not encode image ${i}:`, err);
+        galleryVecs.push(new Float32Array(512));
+      }
+    }
+
+    setProgress(100, '✅ Ready — CLIP Loaded! All 20 gallery images indexed.');
     modelReady = true;
     statusBar.classList.add('loaded');
-    statusBar.querySelector('.status-icon').textContent = 'âœ…';
+    statusBar.querySelector('.status-icon').textContent = '✅';
     setTimeout(() => loaderOverlay.classList.add('hidden'), 500);
 
   } catch (err) {
-    setProgress(0, 'âŒ Failed to load model: ' + err.message);
+    setProgress(0, '❌ Failed to load model: ' + err.message);
     statusBar.classList.add('error');
-    statusBar.querySelector('.status-icon').textContent = 'âŒ';
+    statusBar.querySelector('.status-icon').textContent = '❌';
     console.error(err);
     setTimeout(() => loaderOverlay.classList.add('hidden'), 2000);
   }
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// TEXT â†’ IMAGE SEARCH
-// Key fix: run CLIP once with [query, ...all_captions] as labels on each gallery image.
-// Softmax over 21 labels â†’ only images semantically matching query score high for that label.
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────────────────────
+// SEARCH HANDLERS
+// ─────────────────────────────────────────────────
 async function searchByText(query, topK = 12) {
   const t0 = performance.now();
-  // Build label list: query + all gallery captions (as negative/alternative context)
-  // This makes softmax competitive â€” only truly matching images score high for `query`
-  const labels = [query, ...ALL_CAPTIONS];
-  const scores = [];
-
-  for (let i = 0; i < GALLERY.length; i++) {
-    try {
-      const result = await extractor(GALLERY[i].url, labels);
-      // result is sorted desc by score; find the score for our query label
-      const queryResult = result.find(r => r.label === query);
-      scores.push({ idx: i, score: queryResult ? queryResult.score : 0 });
-    } catch (_) {
-      scores.push({ idx: i, score: 0 });
-    }
-  }
+  const [textVec] = await encodeText(query);
+  
+  const scores = galleryVecs.map((gVec, idx) => ({
+    idx,
+    score: dot(textVec, gVec)
+  }));
 
   scores.sort((a, b) => b.score - a.score);
   return { results: scores.slice(0, topK), latency: performance.now() - t0 };
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// IMAGE â†’ IMAGE SEARCH
-// Run CLIP on the uploaded image with ALL gallery captions as labels.
-// The caption that wins = the most visually similar gallery image.
-// This is the correct use of zero-shot-image-classification for image similarity.
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function searchByImage(imageDataUrl, topK = 12) {
   const t0 = performance.now();
-  const result = await extractor(imageDataUrl, ALL_CAPTIONS);
-  // result: [{label, score}, ...] sorted desc by score
-  const mapped = result.map(r => {
-    const idx = ALL_CAPTIONS.indexOf(r.label);
-    return { idx, score: r.score };
-  }).filter(r => r.idx >= 0).sort((a, b) => b.score - a.score);
+  const imgVec = await encodeImage(imageDataUrl);
 
-  return { results: mapped.slice(0, topK), latency: performance.now() - t0 };
+  const scores = galleryVecs.map((gVec, idx) => ({
+    idx,
+    score: dot(imgVec, gVec)
+  }));
+
+  scores.sort((a, b) => b.score - a.score);
+  return { results: scores.slice(0, topK), latency: performance.now() - t0 };
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// ZERO-SHOT CLASSIFY
-// Standard usage: one image, list of user-provided labels.
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function classifyImage(imageDataUrl, labels) {
   const t0 = performance.now();
-  const promptedLabels = labels.map(l => `a photo of a ${l}`);
-  const result = await extractor(imageDataUrl, promptedLabels);
-  const latency = performance.now() - t0;
-  return {
-    predictions: result.map((r, i) => ({
-      label: labels[i] ?? r.label.replace('a photo of a ', ''),
-      prob: r.score
-    })),
-    latency
-  };
+  const imgVec = await encodeImage(imageDataUrl);
+  
+  const prompts = labels.map(l => `a photo of a ${l}`);
+  const labelVecs = await encodeText(prompts);
+
+  const logits = labelVecs.map(lVec => 100 * dot(imgVec, lVec));
+  
+  const maxLogit = Math.max(...logits);
+  const exps = logits.map(l => Math.exp(l - maxLogit));
+  const sumExps = exps.reduce((a, b) => a + b, 0);
+  const probs = exps.map(e => e / sumExps);
+
+  const predictions = labels.map((label, i) => ({
+    label,
+    prob: probs[i]
+  }));
+
+  return { predictions, latency: performance.now() - t0 };
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────────────────────
 // RENDER HELPERS
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────────────────────
 function renderResults(containerId, scored, latency) {
   const container = document.getElementById(containerId);
   if (!scored.length) {
-    container.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ”</div><p>No results found</p></div>';
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><p>No results found</p></div>';
     return;
   }
   const maxScore = scored[0].score;
+  const minScore = scored[scored.length - 1].score;
+  const range = maxScore - minScore || 1;
+
   container.innerHTML = `
     <div class="results-header">
       <div class="results-count">Showing <strong>${scored.length}</strong> results</div>
-      <div class="latency-badge">âš¡ ${latency.toFixed(0)}ms</div>
+      <div class="latency-badge">⚡ ${latency.toFixed(0)}ms</div>
     </div>
     <div class="results-grid">
       ${scored.map((r, rank) => {
         const item = GALLERY[r.idx];
         if (!item) return '';
-        const pct = maxScore > 0 ? (r.score / maxScore * 100).toFixed(0) : 0;
+        const normScore = Math.max(0, Math.min(1, (r.score - minScore) / range));
+        const pct = (r.score * 100).toFixed(1);
+        const barPct = (normScore * 100).toFixed(0);
+
         return `
           <div class="result-card" style="animation-delay:${rank * 0.04}s">
             <div class="result-img-wrap">
@@ -1263,8 +1318,8 @@ function renderResults(containerId, scored, latency) {
             </div>
             <div class="result-info">
               <div class="result-score-wrap">
-                <div class="result-score-bar"><div class="result-score-fill" style="width:${pct}%"></div></div>
-                <div class="result-score-text">${(r.score * 100).toFixed(1)}%</div>
+                <div class="result-score-bar"><div class="result-score-fill" style="width:${barPct}%"></div></div>
+                <div class="result-score-text">${pct}%</div>
               </div>
               <div class="result-caption">${item.caption}</div>
             </div>
@@ -1280,7 +1335,7 @@ function renderClassify(containerId, predictions, latency) {
   container.innerHTML = `
     <div class="results-header" style="margin-bottom:16px">
       <div class="results-count">Top prediction: <strong>${sorted[0].label}</strong></div>
-      <div class="latency-badge">âš¡ ${latency.toFixed(0)}ms</div>
+      <div class="latency-badge">⚡ ${latency.toFixed(0)}ms</div>
     </div>
     <div class="classify-results">
       ${sorted.map((p, i) => {
@@ -1297,7 +1352,7 @@ function renderClassify(containerId, predictions, latency) {
     </div>`;
 }
 
-function setLoading(btnId, resultId, msg = 'Searchingâ€¦') {
+function setLoading(btnId, resultId, msg = 'Searching…') {
   document.getElementById(btnId).disabled = true;
   document.getElementById(btnId).innerHTML = `<span class="spinner"></span> ${msg}`;
   document.getElementById(resultId).innerHTML = '<div class="empty-state"><div class="spinner" style="width:32px;height:32px"></div></div>';
@@ -1308,11 +1363,11 @@ function resetBtn(btnId, label) {
   b.innerHTML = label;
 }
 
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────────────────────
 // EXPOSED HANDLERS
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────────────────────
 window.runTextSearch = async function () {
-  if (!modelReady) return alert('Model still loading, please waitâ€¦');
+  if (!modelReady) return alert('Model still loading, please wait…');
   const q = document.getElementById('text-query').value.trim();
   if (!q) return;
   setLoading('text-search-btn', 'text-results');
@@ -1321,9 +1376,9 @@ window.runTextSearch = async function () {
     renderResults('text-results', results, latency);
   } catch (e) {
     console.error(e);
-    document.getElementById('text-results').innerHTML = '<div class="empty-state">âŒ Search failed â€” check console</div>';
+    document.getElementById('text-results').innerHTML = '<div class="empty-state">❌ Search failed — check console</div>';
   }
-  resetBtn('text-search-btn', 'Search âœ¦');
+  resetBtn('text-search-btn', 'Search ✦');
 };
 
 window.quickQuery = function (q) {
@@ -1332,61 +1387,79 @@ window.quickQuery = function (q) {
 };
 
 window.runImageSearch = async function () {
-  if (!modelReady) return alert('Model still loading, please waitâ€¦');
+  if (!modelReady) return alert('Model still loading, please wait…');
   const preview = document.getElementById('img-preview');
   if (!preview.src || preview.style.display === 'none') return alert('Please upload an image first');
-  setLoading('img-search-btn', 'image-results', 'Finding similarâ€¦');
+  setLoading('img-search-btn', 'image-results', 'Finding similar…');
   try {
     const { results, latency } = await searchByImage(preview.src);
     renderResults('image-results', results, latency);
   } catch (e) {
     console.error(e);
-    document.getElementById('image-results').innerHTML = '<div class="empty-state">âŒ Search failed</div>';
+    document.getElementById('image-results').innerHTML = '<div class="empty-state">❌ Search failed</div>';
   }
-  resetBtn('img-search-btn', 'ðŸ” Find Similar Images');
+  resetBtn('img-search-btn', '🔍 Find Similar Images');
 };
 
 window.runHybridSearch = async function () {
-  if (!modelReady) return alert('Model still loading, please waitâ€¦');
+  if (!modelReady) return alert('Model still loading, please wait…');
   const q = document.getElementById('hybrid-query').value.trim();
   const preview = document.getElementById('hyb-preview');
   const alpha = parseFloat(document.getElementById('alpha-slider').value);
   if (!q && (!preview.src || preview.style.display === 'none')) return alert('Enter a text query or upload an image');
-  setLoading('hyb-search-btn', 'hybrid-results', 'Blending modalitiesâ€¦');
+  setLoading('hyb-search-btn', 'hybrid-results', 'Blending modalities…');
   try {
-    let textResults = [], imageResults = [];
-    if (q) { const r = await searchByText(q, 20); textResults = r.results; }
-    if (preview.src && preview.style.display !== 'none') { const r = await searchByImage(preview.src, 20); imageResults = r.results; }
-    const blended = {};
-    textResults.forEach(r  => { blended[r.idx] = (blended[r.idx] || 0) + alpha * r.score; });
-    imageResults.forEach(r => { blended[r.idx] = (blended[r.idx] || 0) + (1 - alpha) * r.score; });
-    const results = Object.entries(blended)
-      .map(([idx, score]) => ({ idx: parseInt(idx), score }))
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 12);
-    renderResults('hybrid-results', results, 0);
+    let textVec = null, imgVec = null;
+    if (q) [textVec] = await encodeText(q);
+    if (preview.src && preview.style.display !== 'none') imgVec = await encodeImage(preview.src);
+
+    let queryVec;
+    if (textVec && imgVec) {
+      queryVec = new Float32Array(512);
+      let norm = 0;
+      for (let i = 0; i < 512; i++) {
+        const val = alpha * textVec[i] + (1 - alpha) * imgVec[i];
+        queryVec[i] = val;
+        norm += val * val;
+      }
+      norm = Math.sqrt(norm) || 1e-8;
+      for (let i = 0; i < 512; i++) queryVec[i] /= norm;
+    } else if (textVec) {
+      queryVec = textVec;
+    } else {
+      queryVec = imgVec;
+    }
+
+    const t0 = performance.now();
+    const scores = galleryVecs.map((gVec, idx) => ({
+      idx,
+      score: dot(queryVec, gVec)
+    }));
+    scores.sort((a, b) => b.score - a.score);
+
+    renderResults('hybrid-results', scores.slice(0, 12), performance.now() - t0);
   } catch (e) {
     console.error(e);
-    document.getElementById('hybrid-results').innerHTML = '<div class="empty-state">âŒ Search failed</div>';
+    document.getElementById('hybrid-results').innerHTML = '<div class="empty-state">❌ Search failed</div>';
   }
-  resetBtn('hyb-search-btn', 'âš¡ Hybrid Search');
+  resetBtn('hyb-search-btn', '⚡ Hybrid Search');
 };
 
 const userLabels = [];
 window.runClassify = async function () {
-  if (!modelReady) return alert('Model still loading, please waitâ€¦');
+  if (!modelReady) return alert('Model still loading, please wait…');
   if (userLabels.length < 2) return alert('Please enter at least 2 labels');
   const preview = document.getElementById('cls-preview');
   if (!preview.src || preview.style.display === 'none') return alert('Please upload an image first');
-  setLoading('cls-search-btn', 'classify-results', 'Classifyingâ€¦');
+  setLoading('cls-search-btn', 'classify-results', 'Classifying…');
   try {
     const { predictions, latency } = await classifyImage(preview.src, userLabels);
     renderClassify('classify-results', predictions, latency);
   } catch (e) {
     console.error(e);
-    document.getElementById('classify-results').innerHTML = '<div class="empty-state">âŒ Classification failed</div>';
+    document.getElementById('classify-results').innerHTML = '<div class="empty-state">❌ Classification failed</div>';
   }
-  resetBtn('cls-search-btn', 'ðŸ· Classify Image');
+  resetBtn('cls-search-btn', '🏷 Classify Image');
 };
 
 window.setPresetLabels = function (labels) {
@@ -1401,12 +1474,12 @@ function renderLabelTags() {
   userLabels.forEach((l, i) => {
     const tag = document.createElement('div');
     tag.className = 'label-tag';
-    tag.innerHTML = `${l}<span class="remove-tag" onclick="removeLabel(${i})">Ã—</span>`;
+    tag.innerHTML = `${l}<span class="remove-tag" onclick="removeLabel(${i})">×</span>`;
     wrap.appendChild(tag);
   });
   const inp = document.createElement('input');
   inp.id = 'label-input';
-  inp.placeholder = 'Add labelâ€¦';
+  inp.placeholder = 'Add label…';
   inp.addEventListener('keydown', onLabelKey);
   wrap.appendChild(inp);
 }
@@ -1422,7 +1495,7 @@ function onLabelKey(e) {
   }
 }
 
-// â”€â”€ Drag & drop helpers
+// ── Drag & drop helpers
 window.onDragOver  = (e, id) => { e.preventDefault(); document.getElementById(id).classList.add('drag-over'); };
 window.onDragLeave = (e, id) => { document.getElementById(id).classList.remove('drag-over'); };
 window.onFileDrop  = (e, inputId, zoneId, previewId) => {
@@ -1448,7 +1521,7 @@ function loadFilePreview(file, previewId, zoneId) {
   reader.readAsDataURL(file);
 }
 
-// â”€â”€ Tab switching
+// ── Tab switching
 window.switchTab = function (tab) {
   ['text', 'image', 'hybrid', 'classify'].forEach(t => {
     document.getElementById('tab-' + t).classList.toggle('active', t === tab);
@@ -1456,14 +1529,14 @@ window.switchTab = function (tab) {
   });
 };
 
-// â”€â”€ Keyboard shortcuts
+// ── Keyboard shortcuts
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('text-query').addEventListener('keydown', e => { if (e.key === 'Enter') window.runTextSearch(); });
   document.getElementById('hybrid-query').addEventListener('keydown', e => { if (e.key === 'Enter') window.runHybridSearch(); });
   document.getElementById('label-input').addEventListener('keydown', onLabelKey);
 });
 
-// â”€â”€ Boot
+// ── Boot
 init();
 </script>
 </body>
