@@ -1,0 +1,13 @@
+data/raw/
+data/index/
+data/processed/
+reports/
+__pycache__/
+*.pyc
+.venv/
+.env
+*.egg-info/
+.pytest_cache/
+.DS_Store
+# CLIP weights are downloaded at runtime — don't commit
+~/.cache/huggingface/
