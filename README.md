@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-Yashit2005-181717?style=for-the-badge&logo=github)](https://github.com/Yashit2005/multimodal-search)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-> **[🚀 Interactive Demo →](https://yashit2005.github.io/multimodal-search)** — Run CLIP directly in your browser. Text search, image search, hybrid search, and zero-shot classification — no API key, no backend.
+> **[🚀 Live Demo →](https://yashit2005.github.io/multimodal-search)** — Run CLIP directly in your browser. Text search, image search, hybrid search, and zero-shot classification — no API key, no backend.
 
 Search a corpus of images using **natural language**, an **example image**, or both simultaneously.
 Built on OpenCLIP (ViT-B/32) and FAISS, served via FastAPI.
@@ -193,17 +193,3 @@ multimodal-search/
 ```
 
 ---
-
-## Interview talking points
-
-- **"CLIP embeds images and text into the same 512-d space via contrastive training on 400M pairs. Cross-modal search works because matching (image, text) pairs are pulled together during training."**
-- **"I use L2-normalised embeddings and FAISS IndexFlatIP — inner product on unit vectors equals cosine similarity, so I get exact cosine search without a separate normalisation step."**
-- **"Zero-shot classification requires no labelled training data. I embed each class label as 'a photo of a {label}' and take argmax of image-text similarities. It works because CLIP saw these patterns during pretraining."**
-- **"BM25 on captions gives Recall@10 ≈ 0.28. CLIP gives 0.68 — a 2.4× improvement — because CLIP captures semantic similarity rather than requiring exact word matches."**
-- **"For production at 1M+ images, I'd switch from IndexFlatIP (exact, O(N)) to IndexHNSWFlat (approximate, O(log N)) trading ~5% recall for 100× query speed."**
-
----
-
-## License
-
-MIT
