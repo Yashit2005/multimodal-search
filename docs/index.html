@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MultiModal Search — CLIP + FAISS by Yashit2005</title>
+  <title>MultiModal Search â€” CLIP + FAISS by Yashit2005</title>
   <meta name="description" content="Interactive demo of a multimodal image search engine built with OpenCLIP (ViT-B/32) and FAISS. Search images by natural language, upload images, or blend both queries." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* ─── ANIMATED GRID BACKGROUND ─── */
+    /* â”€â”€â”€ ANIMATED GRID BACKGROUND â”€â”€â”€ */
     body::before {
       content: '';
       position: fixed;
@@ -49,7 +49,7 @@
       z-index: 0;
     }
 
-    /* ─── NAV ─── */
+    /* â”€â”€â”€ NAV â”€â”€â”€ */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -91,7 +91,7 @@
     }
     .nav-badge:hover { opacity: 0.85; transform: scale(1.04); }
 
-    /* ─── HERO ─── */
+    /* â”€â”€â”€ HERO â”€â”€â”€ */
     .hero {
       position: relative;
       z-index: 1;
@@ -243,7 +243,7 @@
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-    /* ─── SECTION ─── */
+    /* â”€â”€â”€ SECTION â”€â”€â”€ */
     .section {
       position: relative;
       z-index: 1;
@@ -273,7 +273,7 @@
       margin-bottom: 48px;
     }
 
-    /* ─── MODEL STATUS ─── */
+    /* â”€â”€â”€ MODEL STATUS â”€â”€â”€ */
     #model-status-bar {
       display: flex;
       align-items: center;
@@ -311,7 +311,7 @@
       transition: width 0.3s ease;
     }
 
-    /* ─── TABS ─── */
+    /* â”€â”€â”€ TABS â”€â”€â”€ */
     .tabs {
       display: flex;
       gap: 4px;
@@ -346,7 +346,7 @@
     .tab-panel { display: none; animation: fadeIn 0.3s ease; }
     .tab-panel.active { display: block; }
 
-    /* ─── SEARCH PANEL ─── */
+    /* â”€â”€â”€ SEARCH PANEL â”€â”€â”€ */
     .search-input-wrap {
       display: flex;
       gap: 12px;
@@ -384,7 +384,7 @@
     .search-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(99,120,255,0.4); }
     .search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* ─── QUICK QUERIES ─── */
+    /* â”€â”€â”€ QUICK QUERIES â”€â”€â”€ */
     .quick-queries {
       display: flex;
       flex-wrap: wrap;
@@ -403,7 +403,7 @@
     }
     .quick-chip:hover { background: rgba(99,120,255,0.2); transform: scale(1.03); }
 
-    /* ─── DROP ZONE ─── */
+    /* â”€â”€â”€ DROP ZONE â”€â”€â”€ */
     .drop-zone {
       border: 2px dashed rgba(99,120,255,0.35);
       border-radius: 16px;
@@ -430,7 +430,7 @@
       object-fit: contain;
     }
 
-    /* ─── ALPHA SLIDER ─── */
+    /* â”€â”€â”€ ALPHA SLIDER â”€â”€â”€ */
     .slider-wrap {
       margin-bottom: 24px;
     }
@@ -461,7 +461,7 @@
     }
     input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
 
-    /* ─── LABELS INPUT ─── */
+    /* â”€â”€â”€ LABELS INPUT â”€â”€â”€ */
     .labels-wrap {
       margin-bottom: 24px;
     }
@@ -508,7 +508,7 @@
       min-width: 120px;
     }
 
-    /* ─── RESULTS GRID ─── */
+    /* â”€â”€â”€ RESULTS GRID â”€â”€â”€ */
     #results-container {
       min-height: 100px;
     }
@@ -613,7 +613,7 @@
       overflow: hidden;
     }
 
-    /* ─── ZERO-SHOT RESULTS ─── */
+    /* â”€â”€â”€ ZERO-SHOT RESULTS â”€â”€â”€ */
     .classify-results {
       display: flex;
       flex-direction: column;
@@ -662,7 +662,7 @@
       flex-shrink: 0;
     }
 
-    /* ─── ARCHITECTURE ─── */
+    /* â”€â”€â”€ ARCHITECTURE â”€â”€â”€ */
     .arch-section {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -706,7 +706,7 @@
       color: var(--accent1);
     }
 
-    /* ─── METRICS ─── */
+    /* â”€â”€â”€ METRICS â”€â”€â”€ */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -747,7 +747,7 @@
       font-weight: 600;
     }
 
-    /* ─── SPINNER ─── */
+    /* â”€â”€â”€ SPINNER â”€â”€â”€ */
     .spinner {
       display: inline-block;
       width: 18px; height: 18px;
@@ -765,7 +765,7 @@
     }
     .empty-icon { font-size: 3rem; margin-bottom: 16px; opacity: 0.5; }
 
-    /* ─── FOOTER ─── */
+    /* â”€â”€â”€ FOOTER â”€â”€â”€ */
     footer {
       position: relative;
       z-index: 1;
@@ -792,7 +792,7 @@
     }
     .footer-links a:hover { color: var(--text); }
 
-    /* ─── LOADER OVERLAY ─── */
+    /* â”€â”€â”€ LOADER OVERLAY â”€â”€â”€ */
     #loader-overlay {
       position: fixed;
       inset: 0;
@@ -849,20 +849,20 @@
 
 <!-- LOADER -->
 <div id="loader-overlay">
-  <div class="loader-logo">⚡ MultiModal Search</div>
+  <div class="loader-logo">âš¡ MultiModal Search</div>
   <div class="loader-spinner"></div>
   <div class="loader-progress"><div class="loader-progress-fill" id="loader-fill"></div></div>
-  <div class="loader-msg" id="loader-msg">Loading CLIP model (ViT-B/32) via WebAssembly — first load ~150MB, cached after…</div>
+  <div class="loader-msg" id="loader-msg">Loading CLIP model (ViT-B/32) via WebAssembly â€” first load ~150MB, cached afterâ€¦</div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">⚡ MultiModal Search</div>
+  <div class="nav-logo">âš¡ MultiModal Search</div>
   <div class="nav-links">
     <a href="#demo">Demo</a>
     <a href="#how">Architecture</a>
     <a href="#metrics">Results</a>
-    <a href="https://github.com/Yashit2005/multimodal-search" target="_blank" rel="noopener" class="nav-badge">⭐ GitHub</a>
+    <a href="https://github.com/Yashit2005/multimodal-search" target="_blank" rel="noopener" class="nav-badge">â­ GitHub</a>
   </div>
 </nav>
 
@@ -872,17 +872,17 @@
   <div class="hero-orb orb2"></div>
   <div class="hero-orb orb3"></div>
 
-  <div class="hero-chip"><div class="dot"></div> Live demo · CLIP runs in your browser</div>
+  <div class="hero-chip"><div class="dot"></div> Live demo Â· CLIP runs in your browser</div>
 
   <h1>Search Images with<br><span>Natural Language + Vision</span></h1>
   <p>
     A multimodal image search engine built with <strong>OpenCLIP (ViT-B/32)</strong> and <strong>FAISS</strong>.
-    Type text, upload an image, or combine both — all running live in your browser via WebAssembly.
+    Type text, upload an image, or combine both â€” all running live in your browser via WebAssembly.
   </p>
 
   <div class="hero-actions">
-    <a href="#demo" class="btn-primary">🔍 Try the Demo</a>
-    <a href="https://github.com/Yashit2005/multimodal-search" target="_blank" rel="noopener" class="btn-secondary">⭐ View on GitHub</a>
+    <a href="#demo" class="btn-primary">ðŸ” Try the Demo</a>
+    <a href="https://github.com/Yashit2005/multimodal-search" target="_blank" rel="noopener" class="btn-secondary">â­ View on GitHub</a>
   </div>
 
   <div class="hero-stats">
@@ -909,36 +909,36 @@
 <section class="section" id="demo">
   <div class="section-label">Interactive Demo</div>
   <h2 class="section-title">Try All Four Search Modes</h2>
-  <p class="section-sub">CLIP encodes images and text into the same 512-d vector space. All computation runs locally in your browser — no data leaves your machine.</p>
+  <p class="section-sub">CLIP encodes images and text into the same 512-d vector space. All computation runs locally in your browser â€” no data leaves your machine.</p>
 
   <!-- Model status -->
   <div id="model-status-bar">
-    <span class="status-icon">⏳</span>
-    <span id="status-text">Loading CLIP model…</span>
+    <span class="status-icon">â³</span>
+    <span id="status-text">Loading CLIP modelâ€¦</span>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="status-progress"></div></div>
   </div>
 
   <!-- Tabs -->
   <div class="tabs">
-    <button class="tab-btn active" id="tab-text" onclick="switchTab('text')">🔤 Text → Image</button>
-    <button class="tab-btn" id="tab-image" onclick="switchTab('image')">🖼 Image → Image</button>
-    <button class="tab-btn" id="tab-hybrid" onclick="switchTab('hybrid')">⚡ Hybrid Search</button>
-    <button class="tab-btn" id="tab-classify" onclick="switchTab('classify')">🏷 Zero-Shot Classify</button>
+    <button class="tab-btn active" id="tab-text" onclick="switchTab('text')">ðŸ”¤ Text â†’ Image</button>
+    <button class="tab-btn" id="tab-image" onclick="switchTab('image')">ðŸ–¼ Image â†’ Image</button>
+    <button class="tab-btn" id="tab-hybrid" onclick="switchTab('hybrid')">âš¡ Hybrid Search</button>
+    <button class="tab-btn" id="tab-classify" onclick="switchTab('classify')">ðŸ· Zero-Shot Classify</button>
   </div>
 
   <!-- Tab: Text Search -->
   <div class="tab-panel active" id="panel-text">
     <div class="search-input-wrap">
-      <input id="text-query" class="search-input" type="text" placeholder="e.g. a dog playing on the beach…" autocomplete="off" />
-      <button class="search-btn" id="text-search-btn" onclick="runTextSearch()">Search ✦</button>
+      <input id="text-query" class="search-input" type="text" placeholder="e.g. a dog playing on the beachâ€¦" autocomplete="off" />
+      <button class="search-btn" id="text-search-btn" onclick="runTextSearch()">Search âœ¦</button>
     </div>
     <div class="quick-queries">
-      <span class="quick-chip" onclick="quickQuery('a dog playing fetch')">🐕 dog playing fetch</span>
-      <span class="quick-chip" onclick="quickQuery('sunset over the ocean')">🌅 sunset over ocean</span>
-      <span class="quick-chip" onclick="quickQuery('children playing outside')">👧 children playing</span>
-      <span class="quick-chip" onclick="quickQuery('a cat sleeping on a sofa')">🐱 sleeping cat</span>
-      <span class="quick-chip" onclick="quickQuery('urban street at night')">🌃 urban street night</span>
-      <span class="quick-chip" onclick="quickQuery('people celebrating')">🎉 people celebrating</span>
+      <span class="quick-chip" onclick="quickQuery('a dog playing fetch')">ðŸ• dog playing fetch</span>
+      <span class="quick-chip" onclick="quickQuery('sunset over the ocean')">ðŸŒ… sunset over ocean</span>
+      <span class="quick-chip" onclick="quickQuery('children playing outside')">ðŸ‘§ children playing</span>
+      <span class="quick-chip" onclick="quickQuery('a cat sleeping on a sofa')">ðŸ± sleeping cat</span>
+      <span class="quick-chip" onclick="quickQuery('urban street at night')">ðŸŒƒ urban street night</span>
+      <span class="quick-chip" onclick="quickQuery('people celebrating')">ðŸŽ‰ people celebrating</span>
     </div>
     <div id="text-results"></div>
   </div>
@@ -946,42 +946,42 @@
   <!-- Tab: Image Search -->
   <div class="tab-panel" id="panel-image">
     <div class="drop-zone" id="img-drop-zone" onclick="document.getElementById('img-file-input').click()" ondragover="onDragOver(event,'img-drop-zone')" ondragleave="onDragLeave(event,'img-drop-zone')" ondrop="onFileDrop(event,'img-file-input','img-drop-zone','img-preview')">
-      <div class="drop-icon">📁</div>
+      <div class="drop-icon">ðŸ“</div>
       <div class="drop-text">Drop an image here or <strong>click to browse</strong></div>
       <img id="img-preview" class="drop-preview" alt="Preview" />
     </div>
     <input type="file" id="img-file-input" accept="image/*" style="display:none" onchange="onFileSelect(event,'img-preview','img-drop-zone')" />
-    <button class="search-btn" onclick="runImageSearch()" id="img-search-btn" style="width:100%">🔍 Find Similar Images</button>
+    <button class="search-btn" onclick="runImageSearch()" id="img-search-btn" style="width:100%">ðŸ” Find Similar Images</button>
     <div id="image-results" style="margin-top:24px"></div>
   </div>
 
   <!-- Tab: Hybrid Search -->
   <div class="tab-panel" id="panel-hybrid">
     <div class="search-input-wrap" style="margin-bottom:16px">
-      <input id="hybrid-query" class="search-input" type="text" placeholder="e.g. like this photo but at sunset…" autocomplete="off" />
+      <input id="hybrid-query" class="search-input" type="text" placeholder="e.g. like this photo but at sunsetâ€¦" autocomplete="off" />
     </div>
     <div class="drop-zone" id="hyb-drop-zone" onclick="document.getElementById('hyb-file-input').click()" ondragover="onDragOver(event,'hyb-drop-zone')" ondragleave="onDragLeave(event,'hyb-drop-zone')" ondrop="onFileDrop(event,'hyb-file-input','hyb-drop-zone','hyb-preview')">
-      <div class="drop-icon">📁</div>
+      <div class="drop-icon">ðŸ“</div>
       <div class="drop-text">Drop reference image here or <strong>click to browse</strong></div>
       <img id="hyb-preview" class="drop-preview" alt="Preview" />
     </div>
     <input type="file" id="hyb-file-input" accept="image/*" style="display:none" onchange="onFileSelect(event,'hyb-preview','hyb-drop-zone')" />
     <div class="slider-wrap">
       <div class="slider-label">
-        <span>🖼 Image only</span>
-        <span>α = <span id="alpha-val">0.50</span></span>
-        <span>Text only 🔤</span>
+        <span>ðŸ–¼ Image only</span>
+        <span>Î± = <span id="alpha-val">0.50</span></span>
+        <span>Text only ðŸ”¤</span>
       </div>
       <input type="range" id="alpha-slider" min="0" max="1" step="0.05" value="0.5" oninput="document.getElementById('alpha-val').textContent=parseFloat(this.value).toFixed(2)" />
     </div>
-    <button class="search-btn" onclick="runHybridSearch()" id="hyb-search-btn" style="width:100%">⚡ Hybrid Search</button>
+    <button class="search-btn" onclick="runHybridSearch()" id="hyb-search-btn" style="width:100%">âš¡ Hybrid Search</button>
     <div id="hybrid-results" style="margin-top:24px"></div>
   </div>
 
   <!-- Tab: Zero-Shot Classify -->
   <div class="tab-panel" id="panel-classify">
     <div class="drop-zone" id="cls-drop-zone" onclick="document.getElementById('cls-file-input').click()" ondragover="onDragOver(event,'cls-drop-zone')" ondragleave="onDragLeave(event,'cls-drop-zone')" ondrop="onFileDrop(event,'cls-file-input','cls-drop-zone','cls-preview')">
-      <div class="drop-icon">🖼</div>
+      <div class="drop-icon">ðŸ–¼</div>
       <div class="drop-text">Upload image to classify</div>
       <img id="cls-preview" class="drop-preview" alt="Preview" />
     </div>
@@ -989,16 +989,16 @@
     <div class="labels-wrap">
       <div class="labels-hint">Enter class labels (press Enter or comma to add):</div>
       <div class="label-tags" id="label-tags-wrap" onclick="document.getElementById('label-input').focus()">
-        <input id="label-input" placeholder="e.g. cat, dog, bird…" />
+        <input id="label-input" placeholder="e.g. cat, dog, birdâ€¦" />
       </div>
     </div>
     <div class="quick-queries" style="margin-bottom:16px">
-      <span class="quick-chip" onclick="setPresetLabels(['dog','cat','bird','horse','fish'])">🐾 Animals</span>
-      <span class="quick-chip" onclick="setPresetLabels(['beach','mountain','forest','city','desert'])">🌍 Scenes</span>
-      <span class="quick-chip" onclick="setPresetLabels(['happy','sad','angry','surprised','calm'])">😊 Emotions</span>
-      <span class="quick-chip" onclick="setPresetLabels(['day','night','sunrise','sunset','cloudy'])">☀️ Time of Day</span>
+      <span class="quick-chip" onclick="setPresetLabels(['dog','cat','bird','horse','fish'])">ðŸ¾ Animals</span>
+      <span class="quick-chip" onclick="setPresetLabels(['beach','mountain','forest','city','desert'])">ðŸŒ Scenes</span>
+      <span class="quick-chip" onclick="setPresetLabels(['happy','sad','angry','surprised','calm'])">ðŸ˜Š Emotions</span>
+      <span class="quick-chip" onclick="setPresetLabels(['day','night','sunrise','sunset','cloudy'])">â˜€ï¸ Time of Day</span>
     </div>
-    <button class="search-btn" onclick="runClassify()" id="cls-search-btn" style="width:100%">🏷 Classify Image</button>
+    <button class="search-btn" onclick="runClassify()" id="cls-search-btn" style="width:100%">ðŸ· Classify Image</button>
     <div id="classify-results" style="margin-top:24px"></div>
   </div>
 </section>
@@ -1007,45 +1007,45 @@
 <section class="section" id="how">
   <div class="section-label">Under the Hood</div>
   <h2 class="section-title">How It Works</h2>
-  <p class="section-sub">CLIP (Contrastive Language–Image Pretraining) maps images and text into a shared 512-dimensional space via contrastive training on 400M pairs.</p>
+  <p class="section-sub">CLIP (Contrastive Languageâ€“Image Pretraining) maps images and text into a shared 512-dimensional space via contrastive training on 400M pairs.</p>
 
   <div class="arch-section">
     <div class="arch-grid">
       <div class="arch-card">
-        <div class="arch-icon">🖼</div>
+        <div class="arch-icon">ðŸ–¼</div>
         <div class="arch-title">Image Encoder</div>
-        <div class="arch-desc">Vision Transformer (ViT-B/32) processes images as 32×32 patches, producing a 512-d embedding normalized to unit length.</div>
-        <div class="arch-tag">ViT-B/32 · 512-d</div>
+        <div class="arch-desc">Vision Transformer (ViT-B/32) processes images as 32Ã—32 patches, producing a 512-d embedding normalized to unit length.</div>
+        <div class="arch-tag">ViT-B/32 Â· 512-d</div>
       </div>
       <div class="arch-card">
-        <div class="arch-icon">📝</div>
+        <div class="arch-icon">ðŸ“</div>
         <div class="arch-title">Text Encoder</div>
         <div class="arch-desc">Transformer-based text encoder converts natural language queries into the same 512-d space. Matching image-text pairs land near each other.</div>
-        <div class="arch-tag">Transformer · 512-d</div>
+        <div class="arch-tag">Transformer Â· 512-d</div>
       </div>
       <div class="arch-card">
-        <div class="arch-icon">⚡</div>
+        <div class="arch-icon">âš¡</div>
         <div class="arch-title">FAISS Index</div>
         <div class="arch-desc">Flat inner-product index on L2-normalized vectors equals exact cosine search. C++ SIMD backend handles 100K+ vectors in &lt;5ms.</div>
-        <div class="arch-tag">IndexFlatIP · &lt;5ms</div>
+        <div class="arch-tag">IndexFlatIP Â· &lt;5ms</div>
       </div>
       <div class="arch-card">
-        <div class="arch-icon">🔀</div>
+        <div class="arch-icon">ðŸ”€</div>
         <div class="arch-title">Hybrid Search</div>
-        <div class="arch-desc">Blend text and image embeddings: combined = α×text + (1-α)×image. Enables "find images like this, but with sunset lighting."</div>
-        <div class="arch-tag">α-blend · tunable</div>
+        <div class="arch-desc">Blend text and image embeddings: combined = Î±Ã—text + (1-Î±)Ã—image. Enables "find images like this, but with sunset lighting."</div>
+        <div class="arch-tag">Î±-blend Â· tunable</div>
       </div>
       <div class="arch-card">
-        <div class="arch-icon">🏷</div>
+        <div class="arch-icon">ðŸ·</div>
         <div class="arch-title">Zero-Shot Classification</div>
         <div class="arch-desc">Embed each label as "a photo of a {label}", embed the image, take argmax of cosine similarities. No training data required.</div>
         <div class="arch-tag">No labels needed</div>
       </div>
       <div class="arch-card">
-        <div class="arch-icon">🧠</div>
+        <div class="arch-icon">ðŸ§ </div>
         <div class="arch-title">Contrastive Training</div>
-        <div class="arch-desc">In a batch of N pairs, CLIP pulls matching (image, text) pairs together and pushes N²–N mismatches apart, learning a joint embedding space.</div>
-        <div class="arch-tag">400M pairs · OpenAI</div>
+        <div class="arch-desc">In a batch of N pairs, CLIP pulls matching (image, text) pairs together and pushes NÂ²â€“N mismatches apart, learning a joint embedding space.</div>
+        <div class="arch-tag">400M pairs Â· OpenAI</div>
       </div>
     </div>
   </div>
@@ -1055,7 +1055,7 @@
 <section class="section" id="metrics">
   <div class="section-label">Benchmark Results</div>
   <h2 class="section-title">Text-to-Image Retrieval on Flickr30K</h2>
-  <p class="section-sub">Evaluated on 5K images. CLIP's semantic understanding crushes BM25 keyword search — 2.4× better Recall@10.</p>
+  <p class="section-sub">Evaluated on 5K images. CLIP's semantic understanding crushes BM25 keyword search â€” 2.4Ã— better Recall@10.</p>
 
   <div class="metrics-grid">
     <div class="metric-card">
@@ -1074,7 +1074,7 @@
       <div class="metric-sub">vs BM25: 0.28 (+143%)</div>
     </div>
     <div class="metric-card">
-      <div class="metric-value">2.4×</div>
+      <div class="metric-value">2.4Ã—</div>
       <div class="metric-label">Better than BM25</div>
       <div class="metric-sub">Semantic vs keyword</div>
     </div>
@@ -1083,45 +1083,47 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">⚡ MultiModal Search</div>
+  <div class="footer-brand">âš¡ MultiModal Search</div>
   <div class="footer-links">
     <a href="https://github.com/Yashit2005/multimodal-search" target="_blank" rel="noopener">GitHub</a>
     <a href="https://github.com/Yashit2005" target="_blank" rel="noopener">@Yashit2005</a>
     <a href="https://huggingface.co/docs/transformers.js" target="_blank" rel="noopener">Transformers.js</a>
   </div>
-  <div style="font-size:0.8rem;color:var(--muted)">MIT License · Built with ❤️</div>
+  <div style="font-size:0.8rem;color:var(--muted)">MIT License Â· Built with â¤ï¸</div>
 </footer>
 
 <!-- Transformers.js -->
 <script type="module">
 import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.2/dist/transformers.min.js';
 
-// ── Gallery images (Unsplash / Wikimedia — public domain)
+// â”€â”€ Gallery images (Unsplash â€” free-to-use)
 const GALLERY = [
-  { url:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', caption:'A labrador dog running on a sunny beach' },
-  { url:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400', caption:'A golden retriever puppy playing fetch in the grass' },
-  { url:'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400', caption:'A cat sleeping peacefully on a warm sofa' },
-  { url:'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400', caption:'An orange tabby cat looking at the camera' },
-  { url:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400', caption:'Sunset over the ocean with golden sky' },
-  { url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', caption:'Mountain landscape with snow peaks and blue sky' },
-  { url:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400', caption:'Dense green forest with sunlight filtering through trees' },
-  { url:'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=400', caption:'Urban street at night with neon lights and rain reflections' },
-  { url:'https://images.unsplash.com/photo-1540747913346-19212a729f33?w=400', caption:'Children playing and laughing in an outdoor park' },
-  { url:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400', caption:'People celebrating at a party with confetti and music' },
-  { url:'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400', caption:'Beautiful sunrise over rolling hills and meadows' },
-  { url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', caption:'A horse galloping across an open field' },
-  { url:'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400', caption:'Colorful tropical fish swimming in coral reef' },
-  { url:'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=400', caption:'A rabbit sitting in green grass in a garden' },
-  { url:'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400', caption:'Bird in flight over a calm lake at dawn' },
-  { url:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400', caption:'Colorful healthy salad with fresh vegetables' },
-  { url:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400', caption:'Modern living room with cozy sofa and warm lighting' },
-  { url:'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400', caption:'A rocket launching into space with bright exhaust' },
-  { url:'https://images.unsplash.com/photo-1483982258113-b72862e6cff6?w=400', caption:'Snowy winter forest with tall pine trees' },
-  { url:'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=400', caption:'Abstract colorful painting with bold brushstrokes' },
+  { url:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400', caption:'a dog running on a sunny beach' },
+  { url:'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400', caption:'a golden retriever puppy playing fetch in grass' },
+  { url:'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=400', caption:'a cat sleeping peacefully on a warm sofa' },
+  { url:'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400', caption:'an orange tabby cat looking at the camera' },
+  { url:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400', caption:'sunset over the ocean with golden sky' },
+  { url:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400', caption:'mountain landscape with snow peaks and blue sky' },
+  { url:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400', caption:'dense green forest with sunlight filtering through trees' },
+  { url:'https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=400', caption:'urban street at night with neon lights and rain reflections' },
+  { url:'https://images.unsplash.com/photo-1540747913346-19212a729f33?w=400', caption:'children playing and laughing in an outdoor park' },
+  { url:'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400', caption:'people celebrating at a party with confetti and music' },
+  { url:'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400', caption:'beautiful sunrise over rolling hills and meadows' },
+  { url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400', caption:'a horse galloping across an open field' },
+  { url:'https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400', caption:'colorful tropical fish swimming in coral reef' },
+  { url:'https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?w=400', caption:'a rabbit sitting in green grass in a garden' },
+  { url:'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=400', caption:'a bird in flight over a calm lake at dawn' },
+  { url:'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400', caption:'colorful healthy salad with fresh vegetables on a plate' },
+  { url:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400', caption:'modern cozy living room with sofa and warm lighting' },
+  { url:'https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400', caption:'a rocket launching into space with bright exhaust flames' },
+  { url:'https://images.unsplash.com/photo-1483982258113-b72862e6cff6?w=400', caption:'snowy winter forest with tall pine trees covered in snow' },
+  { url:'https://images.unsplash.com/photo-1493558103817-58b2924bce98?w=400', caption:'abstract colorful painting with bold brushstrokes and vivid colors' },
 ];
 
+// Pre-extract all captions for multi-label scoring
+const ALL_CAPTIONS = GALLERY.map(g => g.caption);
+
 let extractor = null;
-let galleryEmbeddings = null;
 let modelReady = false;
 
 const loaderOverlay = document.getElementById('loader-overlay');
@@ -1134,32 +1136,12 @@ const statusProg    = document.getElementById('status-progress');
 function setProgress(pct, msg) {
   loaderFill.style.width = pct + '%';
   statusProg.style.width = pct + '%';
-  if(msg) { loaderMsg.textContent = msg; statusText.textContent = msg; }
-}
-
-async function loadImageAsPixels(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width; canvas.height = img.height;
-      canvas.getContext('2d').drawImage(img,0,0);
-      resolve(canvas);
-    };
-    img.onerror = () => {
-      // fallback: return a tiny blank canvas
-      const canvas = document.createElement('canvas');
-      canvas.width = 1; canvas.height = 1;
-      resolve(canvas);
-    };
-    img.src = url;
-  });
+  if (msg) { loaderMsg.textContent = msg; statusText.textContent = msg; }
 }
 
 async function init() {
   try {
-    setProgress(5, 'Initialising CLIP model (ViT-B/32)…');
+    setProgress(5, 'Initialising CLIP model (ViT-B/32)â€¦');
     env.allowLocalModels = false;
 
     extractor = await pipeline(
@@ -1168,112 +1150,121 @@ async function init() {
       {
         progress_callback: (p) => {
           if (p.status === 'downloading' && p.total) {
-            const pct = Math.round((p.loaded / p.total) * 60);
-            setProgress(5 + pct, `Downloading model weights… ${Math.round(p.loaded/1e6)}MB / ${Math.round(p.total/1e6)}MB`);
+            const pct = Math.round((p.loaded / p.total) * 85);
+            setProgress(5 + pct, `Downloading CLIP weightsâ€¦ ${Math.round(p.loaded/1e6)}MB / ${Math.round(p.total/1e6)}MB`);
           }
         }
       }
     );
-    setProgress(70, 'Model loaded — computing gallery embeddings…');
 
-    // Compute embeddings for gallery images
-    galleryEmbeddings = [];
-    for (let i = 0; i < GALLERY.length; i++) {
-      const item = GALLERY[i];
-      setProgress(70 + Math.round((i / GALLERY.length) * 25), `Encoding gallery image ${i+1}/${GALLERY.length}…`);
-      try {
-        const canvas = await loadImageAsPixels(item.url);
-        // Use extractor to get image embedding
-        const output = await extractor(item.url, ['a photo']);
-        galleryEmbeddings.push({ idx: i, embedding: null, score: output[0]?.score || 0 });
-      } catch(_) {
-        galleryEmbeddings.push({ idx: i, embedding: null, score: 0 });
-      }
-    }
-
-    setProgress(100, '✅ Ready — all 20 gallery images indexed');
+    setProgress(100, 'âœ… Ready â€” CLIP loaded. Gallery of 20 images ready to search.');
     modelReady = true;
     statusBar.classList.add('loaded');
-    statusBar.querySelector('.status-icon').textContent = '✅';
+    statusBar.querySelector('.status-icon').textContent = 'âœ…';
+    setTimeout(() => loaderOverlay.classList.add('hidden'), 500);
 
-    setTimeout(() => {
-      loaderOverlay.classList.add('hidden');
-    }, 600);
-  } catch(err) {
-    setProgress(0, '❌ Failed to load model: ' + err.message);
+  } catch (err) {
+    setProgress(0, 'âŒ Failed to load model: ' + err.message);
     statusBar.classList.add('error');
-    statusBar.querySelector('.status-icon').textContent = '❌';
-    loaderMsg.textContent = '❌ Model load failed. Check console for details.';
+    statusBar.querySelector('.status-icon').textContent = 'âŒ';
     console.error(err);
     setTimeout(() => loaderOverlay.classList.add('hidden'), 2000);
   }
 }
 
-// ── Cosine similarity between text query and gallery
-async function searchByText(query, topK=12) {
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// TEXT â†’ IMAGE SEARCH
+// Key fix: run CLIP once with [query, ...all_captions] as labels on each gallery image.
+// Softmax over 21 labels â†’ only images semantically matching query score high for that label.
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function searchByText(query, topK = 12) {
   const t0 = performance.now();
-  // For each image in gallery, score against the query
-  const labels = [query];
+  // Build label list: query + all gallery captions (as negative/alternative context)
+  // This makes softmax competitive â€” only truly matching images score high for `query`
+  const labels = [query, ...ALL_CAPTIONS];
   const scores = [];
-  for(let i=0; i<GALLERY.length; i++) {
+
+  for (let i = 0; i < GALLERY.length; i++) {
     try {
       const result = await extractor(GALLERY[i].url, labels);
-      scores.push({ idx: i, score: result[0]?.score || 0 });
-    } catch(_) {
+      // result is sorted desc by score; find the score for our query label
+      const queryResult = result.find(r => r.label === query);
+      scores.push({ idx: i, score: queryResult ? queryResult.score : 0 });
+    } catch (_) {
       scores.push({ idx: i, score: 0 });
     }
   }
-  scores.sort((a,b) => b.score - a.score);
-  const latency = performance.now() - t0;
-  return { results: scores.slice(0, topK), latency };
+
+  scores.sort((a, b) => b.score - a.score);
+  return { results: scores.slice(0, topK), latency: performance.now() - t0 };
 }
 
-async function searchByImage(imageUrl, topK=12) {
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// IMAGE â†’ IMAGE SEARCH
+// Run CLIP on the uploaded image with ALL gallery captions as labels.
+// The caption that wins = the most visually similar gallery image.
+// This is the correct use of zero-shot-image-classification for image similarity.
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function searchByImage(imageDataUrl, topK = 12) {
   const t0 = performance.now();
-  const genericLabels = GALLERY.map(g => g.caption);
-  // Compute similarity of each gallery image against the uploaded image's auto-label
-  const result = await extractor(imageUrl, genericLabels);
-  const top = result.sort((a,b) => b.score - a.score);
-  const latency = performance.now() - t0;
-  // Map back to gallery indices
-  const mapped = top.slice(0,topK).map(r => {
-    const idx = genericLabels.indexOf(r.label);
+  const result = await extractor(imageDataUrl, ALL_CAPTIONS);
+  // result: [{label, score}, ...] sorted desc by score
+  const mapped = result.map(r => {
+    const idx = ALL_CAPTIONS.indexOf(r.label);
     return { idx, score: r.score };
-  });
-  return { results: mapped, latency };
+  }).filter(r => r.idx >= 0).sort((a, b) => b.score - a.score);
+
+  return { results: mapped.slice(0, topK), latency: performance.now() - t0 };
 }
 
-async function classifyImage(imageUrl, labels) {
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ZERO-SHOT CLASSIFY
+// Standard usage: one image, list of user-provided labels.
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+async function classifyImage(imageDataUrl, labels) {
   const t0 = performance.now();
-  const result = await extractor(imageUrl, labels.map(l => `a photo of a ${l}`));
+  const promptedLabels = labels.map(l => `a photo of a ${l}`);
+  const result = await extractor(imageDataUrl, promptedLabels);
   const latency = performance.now() - t0;
-  return { predictions: result.map((r,i)=>({label: labels[i] || r.label.replace('a photo of a ',''), prob: r.score})), latency };
+  return {
+    predictions: result.map((r, i) => ({
+      label: labels[i] ?? r.label.replace('a photo of a ', ''),
+      prob: r.score
+    })),
+    latency
+  };
 }
 
-// ── Render helpers
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// RENDER HELPERS
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function renderResults(containerId, scored, latency) {
   const container = document.getElementById(containerId);
-  if(!scored.length) { container.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><p>No results found</p></div>'; return; }
+  if (!scored.length) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">ðŸ”</div><p>No results found</p></div>';
+    return;
+  }
   const maxScore = scored[0].score;
   container.innerHTML = `
     <div class="results-header">
       <div class="results-count">Showing <strong>${scored.length}</strong> results</div>
-      <div class="latency-badge">⚡ ${latency.toFixed(0)}ms</div>
+      <div class="latency-badge">âš¡ ${latency.toFixed(0)}ms</div>
     </div>
     <div class="results-grid">
       ${scored.map((r, rank) => {
         const item = GALLERY[r.idx];
-        const pct = maxScore > 0 ? (r.score/maxScore*100).toFixed(0) : 0;
+        if (!item) return '';
+        const pct = maxScore > 0 ? (r.score / maxScore * 100).toFixed(0) : 0;
         return `
-          <div class="result-card" style="animation-delay:${rank*0.04}s">
+          <div class="result-card" style="animation-delay:${rank * 0.04}s">
             <div class="result-img-wrap">
-              <div class="rank-badge">#${rank+1}</div>
+              <div class="rank-badge">#${rank + 1}</div>
               <img src="${item.url}" alt="${item.caption}" loading="lazy" />
             </div>
             <div class="result-info">
               <div class="result-score-wrap">
                 <div class="result-score-bar"><div class="result-score-fill" style="width:${pct}%"></div></div>
-                <div class="result-score-text">${(r.score*100).toFixed(1)}%</div>
+                <div class="result-score-text">${(r.score * 100).toFixed(1)}%</div>
               </div>
               <div class="result-caption">${item.caption}</div>
             </div>
@@ -1284,29 +1275,29 @@ function renderResults(containerId, scored, latency) {
 
 function renderClassify(containerId, predictions, latency) {
   const container = document.getElementById(containerId);
-  const sorted = [...predictions].sort((a,b) => b.prob - a.prob);
+  const sorted = [...predictions].sort((a, b) => b.prob - a.prob);
   const max = sorted[0].prob;
   container.innerHTML = `
     <div class="results-header" style="margin-bottom:16px">
       <div class="results-count">Top prediction: <strong>${sorted[0].label}</strong></div>
-      <div class="latency-badge">⚡ ${latency.toFixed(0)}ms</div>
+      <div class="latency-badge">âš¡ ${latency.toFixed(0)}ms</div>
     </div>
     <div class="classify-results">
       ${sorted.map((p, i) => {
-        const pct = max > 0 ? (p.prob/max*100).toFixed(1) : 0;
+        const pct = max > 0 ? (p.prob / max * 100).toFixed(1) : 0;
         return `
-          <div class="classify-row" style="animation-delay:${i*0.05}s">
+          <div class="classify-row" style="animation-delay:${i * 0.05}s">
             <div class="classify-label">${p.label}</div>
             <div class="classify-bar-wrap">
-              <div class="classify-bar-fill ${i===0?'top':''}" style="width:${pct}%"></div>
+              <div class="classify-bar-fill ${i === 0 ? 'top' : ''}" style="width:${pct}%"></div>
             </div>
-            <div class="classify-prob">${(p.prob*100).toFixed(1)}%</div>
+            <div class="classify-prob">${(p.prob * 100).toFixed(1)}%</div>
           </div>`;
       }).join('')}
     </div>`;
 }
 
-function setLoading(btnId, resultId, msg='Searching…') {
+function setLoading(btnId, resultId, msg = 'Searchingâ€¦') {
   document.getElementById(btnId).disabled = true;
   document.getElementById(btnId).innerHTML = `<span class="spinner"></span> ${msg}`;
   document.getElementById(resultId).innerHTML = '<div class="empty-state"><div class="spinner" style="width:32px;height:32px"></div></div>';
@@ -1317,72 +1308,88 @@ function resetBtn(btnId, label) {
   b.innerHTML = label;
 }
 
-// ── Exposed to global scope
-window.runTextSearch = async function() {
-  if (!modelReady) return alert('Model still loading, please wait…');
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// EXPOSED HANDLERS
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+window.runTextSearch = async function () {
+  if (!modelReady) return alert('Model still loading, please waitâ€¦');
   const q = document.getElementById('text-query').value.trim();
   if (!q) return;
-  setLoading('text-search-btn','text-results');
+  setLoading('text-search-btn', 'text-results');
   try {
     const { results, latency } = await searchByText(q);
     renderResults('text-results', results, latency);
-  } catch(e) { document.getElementById('text-results').innerHTML = '<div class="empty-state">❌ Search failed</div>'; }
-  resetBtn('text-search-btn','Search ✦');
+  } catch (e) {
+    console.error(e);
+    document.getElementById('text-results').innerHTML = '<div class="empty-state">âŒ Search failed â€” check console</div>';
+  }
+  resetBtn('text-search-btn', 'Search âœ¦');
 };
 
-window.quickQuery = function(q) {
+window.quickQuery = function (q) {
   document.getElementById('text-query').value = q;
   window.runTextSearch();
 };
 
-window.runImageSearch = async function() {
-  if (!modelReady) return alert('Model still loading, please wait…');
+window.runImageSearch = async function () {
+  if (!modelReady) return alert('Model still loading, please waitâ€¦');
   const preview = document.getElementById('img-preview');
-  if (!preview.src || !preview.style.display || preview.style.display==='none') return alert('Please upload an image first');
-  setLoading('img-search-btn','image-results','Finding similar…');
+  if (!preview.src || preview.style.display === 'none') return alert('Please upload an image first');
+  setLoading('img-search-btn', 'image-results', 'Finding similarâ€¦');
   try {
     const { results, latency } = await searchByImage(preview.src);
     renderResults('image-results', results, latency);
-  } catch(e) { document.getElementById('image-results').innerHTML = '<div class="empty-state">❌ Search failed</div>'; }
-  resetBtn('img-search-btn','🔍 Find Similar Images');
+  } catch (e) {
+    console.error(e);
+    document.getElementById('image-results').innerHTML = '<div class="empty-state">âŒ Search failed</div>';
+  }
+  resetBtn('img-search-btn', 'ðŸ” Find Similar Images');
 };
 
-window.runHybridSearch = async function() {
-  if (!modelReady) return alert('Model still loading, please wait…');
+window.runHybridSearch = async function () {
+  if (!modelReady) return alert('Model still loading, please waitâ€¦');
   const q = document.getElementById('hybrid-query').value.trim();
   const preview = document.getElementById('hyb-preview');
   const alpha = parseFloat(document.getElementById('alpha-slider').value);
-  if(!q && (!preview.src || preview.style.display==='none')) return alert('Enter a text query or upload an image');
-  setLoading('hyb-search-btn','hybrid-results','Blending modalities…');
+  if (!q && (!preview.src || preview.style.display === 'none')) return alert('Enter a text query or upload an image');
+  setLoading('hyb-search-btn', 'hybrid-results', 'Blending modalitiesâ€¦');
   try {
     let textResults = [], imageResults = [];
-    if(q) { const r = await searchByText(q,20); textResults = r.results; }
-    if(preview.src && preview.style.display!=='none') { const r = await searchByImage(preview.src,20); imageResults = r.results; }
-    // Blend: alpha*textScore + (1-alpha)*imageScore
+    if (q) { const r = await searchByText(q, 20); textResults = r.results; }
+    if (preview.src && preview.style.display !== 'none') { const r = await searchByImage(preview.src, 20); imageResults = r.results; }
     const blended = {};
-    textResults.forEach(r => { blended[r.idx] = (blended[r.idx]||0) + alpha * r.score; });
-    imageResults.forEach(r => { blended[r.idx] = (blended[r.idx]||0) + (1-alpha) * r.score; });
-    const results = Object.entries(blended).map(([idx,score])=>({idx:parseInt(idx),score})).sort((a,b)=>b.score-a.score).slice(0,12);
+    textResults.forEach(r  => { blended[r.idx] = (blended[r.idx] || 0) + alpha * r.score; });
+    imageResults.forEach(r => { blended[r.idx] = (blended[r.idx] || 0) + (1 - alpha) * r.score; });
+    const results = Object.entries(blended)
+      .map(([idx, score]) => ({ idx: parseInt(idx), score }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 12);
     renderResults('hybrid-results', results, 0);
-  } catch(e) { document.getElementById('hybrid-results').innerHTML = '<div class="empty-state">❌ Search failed</div>'; }
-  resetBtn('hyb-search-btn','⚡ Hybrid Search');
+  } catch (e) {
+    console.error(e);
+    document.getElementById('hybrid-results').innerHTML = '<div class="empty-state">âŒ Search failed</div>';
+  }
+  resetBtn('hyb-search-btn', 'âš¡ Hybrid Search');
 };
 
 const userLabels = [];
-window.runClassify = async function() {
-  if (!modelReady) return alert('Model still loading, please wait…');
+window.runClassify = async function () {
+  if (!modelReady) return alert('Model still loading, please waitâ€¦');
   if (userLabels.length < 2) return alert('Please enter at least 2 labels');
   const preview = document.getElementById('cls-preview');
-  if (!preview.src || preview.style.display==='none') return alert('Please upload an image first');
-  setLoading('cls-search-btn','classify-results','Classifying…');
+  if (!preview.src || preview.style.display === 'none') return alert('Please upload an image first');
+  setLoading('cls-search-btn', 'classify-results', 'Classifyingâ€¦');
   try {
     const { predictions, latency } = await classifyImage(preview.src, userLabels);
     renderClassify('classify-results', predictions, latency);
-  } catch(e) { document.getElementById('classify-results').innerHTML = '<div class="empty-state">❌ Classification failed</div>'; }
-  resetBtn('cls-search-btn','🏷 Classify Image');
+  } catch (e) {
+    console.error(e);
+    document.getElementById('classify-results').innerHTML = '<div class="empty-state">âŒ Classification failed</div>';
+  }
+  resetBtn('cls-search-btn', 'ðŸ· Classify Image');
 };
 
-window.setPresetLabels = function(labels) {
+window.setPresetLabels = function (labels) {
   userLabels.length = 0;
   labels.forEach(l => userLabels.push(l));
   renderLabelTags();
@@ -1394,45 +1401,39 @@ function renderLabelTags() {
   userLabels.forEach((l, i) => {
     const tag = document.createElement('div');
     tag.className = 'label-tag';
-    tag.innerHTML = `${l}<span class="remove-tag" onclick="removeLabel(${i})">×</span>`;
+    tag.innerHTML = `${l}<span class="remove-tag" onclick="removeLabel(${i})">Ã—</span>`;
     wrap.appendChild(tag);
   });
   const inp = document.createElement('input');
   inp.id = 'label-input';
-  inp.placeholder = 'Add label…';
+  inp.placeholder = 'Add labelâ€¦';
   inp.addEventListener('keydown', onLabelKey);
   wrap.appendChild(inp);
 }
 
-window.removeLabel = function(i) {
-  userLabels.splice(i,1);
-  renderLabelTags();
-};
+window.removeLabel = function (i) { userLabels.splice(i, 1); renderLabelTags(); };
 
 function onLabelKey(e) {
-  if(e.key==='Enter'||e.key===',') {
+  if (e.key === 'Enter' || e.key === ',') {
     e.preventDefault();
-    const val = e.target.value.replace(',','').trim();
-    if(val && !userLabels.includes(val)) { userLabels.push(val); renderLabelTags(); }
-    else { e.target.value=''; }
+    const val = e.target.value.replace(',', '').trim();
+    if (val && !userLabels.includes(val)) { userLabels.push(val); renderLabelTags(); }
+    else { e.target.value = ''; }
   }
-};
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('label-input').addEventListener('keydown', onLabelKey);
-});
+}
 
-// ── File drag/drop helpers (global)
-window.onDragOver = function(e, zoneId) { e.preventDefault(); document.getElementById(zoneId).classList.add('drag-over'); };
-window.onDragLeave = function(e, zoneId) { document.getElementById(zoneId).classList.remove('drag-over'); };
-window.onFileDrop = function(e, inputId, zoneId, previewId) {
+// â”€â”€ Drag & drop helpers
+window.onDragOver  = (e, id) => { e.preventDefault(); document.getElementById(id).classList.add('drag-over'); };
+window.onDragLeave = (e, id) => { document.getElementById(id).classList.remove('drag-over'); };
+window.onFileDrop  = (e, inputId, zoneId, previewId) => {
   e.preventDefault();
   document.getElementById(zoneId).classList.remove('drag-over');
   const file = e.dataTransfer.files[0];
-  if(file) loadFilePreview(file, previewId, zoneId);
+  if (file) loadFilePreview(file, previewId, zoneId);
 };
-window.onFileSelect = function(e, previewId, zoneId) {
+window.onFileSelect = (e, previewId, zoneId) => {
   const file = e.target.files[0];
-  if(file) loadFilePreview(file, previewId, zoneId);
+  if (file) loadFilePreview(file, previewId, zoneId);
 };
 function loadFilePreview(file, previewId, zoneId) {
   const reader = new FileReader();
@@ -1440,27 +1441,29 @@ function loadFilePreview(file, previewId, zoneId) {
     const img = document.getElementById(previewId);
     img.src = ev.target.result;
     img.style.display = 'block';
-    document.getElementById(zoneId).querySelector('.drop-icon').style.display='none';
-    document.getElementById(zoneId).querySelector('.drop-text').style.display='none';
+    const zone = document.getElementById(zoneId);
+    zone.querySelector('.drop-icon').style.display = 'none';
+    zone.querySelector('.drop-text').style.display = 'none';
   };
   reader.readAsDataURL(file);
 }
 
-// ── Tab switching (global)
-window.switchTab = function(tab) {
-  ['text','image','hybrid','classify'].forEach(t => {
-    document.getElementById('tab-'+t).classList.toggle('active', t===tab);
-    document.getElementById('panel-'+t).classList.toggle('active', t===tab);
+// â”€â”€ Tab switching
+window.switchTab = function (tab) {
+  ['text', 'image', 'hybrid', 'classify'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+    document.getElementById('panel-' + t).classList.toggle('active', t === tab);
   });
 };
 
-// ── Enter key for text search
+// â”€â”€ Keyboard shortcuts
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('text-query').addEventListener('keydown', e => { if(e.key==='Enter') window.runTextSearch(); });
-  document.getElementById('hybrid-query').addEventListener('keydown', e => { if(e.key==='Enter') window.runHybridSearch(); });
+  document.getElementById('text-query').addEventListener('keydown', e => { if (e.key === 'Enter') window.runTextSearch(); });
+  document.getElementById('hybrid-query').addEventListener('keydown', e => { if (e.key === 'Enter') window.runHybridSearch(); });
+  document.getElementById('label-input').addEventListener('keydown', onLabelKey);
 });
 
-// ── Boot
+// â”€â”€ Boot
 init();
 </script>
 </body>
